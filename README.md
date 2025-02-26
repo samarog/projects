@@ -1,3 +1,6 @@
-# javascript
+# JavaScript
 
-Back-end academic exercises.
+JavaScript academic exercises for front-end application.
+
+Main project page:
+<a href=''></a>
