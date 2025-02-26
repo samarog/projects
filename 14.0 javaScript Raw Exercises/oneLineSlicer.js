@@ -1,0 +1,1 @@
+alert(prompt('Telegram prompter. Write no more than 50 characters:').slice(0,50));
