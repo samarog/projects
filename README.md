@@ -1,6 +1,8 @@
-# JavaScript
-
-JavaScript academic exercises for front-end application.
+# javascript
+Some .js mechanics.
 
 Main project page:
-<a href=''></a>
+<br/>
+<ul>
+  <li><a href='https://samarog.github.io/javascript/index.html'>Nemo Nobis</a></li>
+</ul>
