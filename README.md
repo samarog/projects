@@ -1,6 +1,6 @@
 # front-end projects
 
-Main projects list:
+Main project list:
 <br/>
 <ul>
   <li><a href='https://samarog.github.io/javascript/17.1%20Dice%20City/dicecity.html'>Dice City</a></li>
