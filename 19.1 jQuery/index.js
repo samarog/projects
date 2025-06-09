@@ -54,6 +54,7 @@ $('.toggle').click(function(){
   if (bg.includes('dark.png')) {
     $('body').css('background-image', 'url(./light.png)');
     $('h3').css('color', 'hsl(191, 27%, 24%)');
+    $('img').css('border', '0')
 if ($('img').attr('src').includes('darkhello.png')) {
       $('img').attr('src', './hello.png').css('border', '0')
 }
@@ -75,6 +76,7 @@ if ($('img').attr('src').includes('darkhello.png')) {
   } else {
     $('body').css('background-image', 'url(./dark.png)');
     $('h3').css('color', 'wheat');
+    $('img').css('border', '1px solid azure')
    if ($('img').attr('src').includes('hello.png')) {
      $('img').attr('src', './darkhello.png').css('border', '1px solid azure')
    } 
