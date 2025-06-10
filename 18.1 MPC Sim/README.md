@@ -42,8 +42,10 @@ This is a simple and responsive **interactive soundboard** built with **vanilla 
 │   ├── tom.mp3
 │   ├── crash.mp3
 │   └── ... other sounds
+```
 
 ## 🔁 How It Works
+
 Pads are selected using document.querySelectorAll('.pad').
 
 addEventListener('click', ...) is added via loop.
