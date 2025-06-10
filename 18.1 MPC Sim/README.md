@@ -59,11 +59,11 @@ animatePad(key) adds a .pressed class for 100ms to the clicked key's pad.
 Optional toggle color logic adds a visual cue (orange vs default).
 
 ## ✨ Features
-🖱️ Mouse click and 🎹 keyboard press detection
-💡 Visual feedback when pads are activated
-🎵 Multi-format audio support (.mp3, .wav)
-🧠 Code with comments and switch statement logic (optional)
-⚡ sound.currentTime = 0 ensures fast retriggering
+🖱️ Mouse click and 🎹 keyboard press detection\
+💡 Visual feedback when pads are activated\
+🎵 Multi-format audio support (.mp3, .wav)\
+🧠 Code with comments and switch statement logic (optional)\
+⚡ sound.currentTime = 0 ensures fast retriggering\
 
 ---
 
