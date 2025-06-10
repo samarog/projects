@@ -6,7 +6,7 @@ An interactive visual project built with HTML, CSS, and jQuery. This experience 
 ## 🎮 What It Does
 
 - Displays a featured image with a dynamic title.
-- Lets users switch between themed visual styles:
+- Let users switch between themed visual styles:
   - 🌧️ Rain Forest (pretty much self explanatory...)
   - ✨ Orbitron District (Futuristic City)
   - 👽 ZORG (Alien Planet)
@@ -50,6 +50,7 @@ An interactive visual project built with HTML, CSS, and jQuery. This experience 
 │   ├── punk.png
 │   ├── light.png
 │   └── dark.png
+```
 
 ## 🚀 How to Run
 1. Clone or download this repository.
