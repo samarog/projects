@@ -1,0 +1,175 @@
+body {
+  text-align: center;
+  background-color:midnightblue;
+}
+
+.backg::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.25;
+  background-image: url(./images/elem.png), -webkit-linear-gradient(-45deg, #ff670f 0%, #ff670f 21%, #ffffff 56%, #0eea57 250%);
+  background-blend-mode: soft-light; /* Or try: multiply, soft-light, screen, etc. */
+  animation: gradient-animation 99s ease-in-out infinite alternate;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%, center;
+  }
+  50% {
+    background-position: 100% 50%, center;
+  }
+  100% {
+    background-position: 0% 50%, center;
+  }
+}
+
+
+
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 3rem;
+  margin:  5%;
+  color: #FEF2BF;
+}
+
+.hiscore {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  margin: 3%;
+  color: #FEF2BF;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px 20px;
+  font-family: 'Press Start 2P';
+  color: #FEF2BF;
+}
+
+.container {
+  display: block;
+  width: 50%;
+  margin: auto;
+  transition: transform 1s ease-in-out; /* or your desired duration/easing */
+  transform: rotate(0deg); /* Initial state */
+}
+
+.btn {
+  margin: 25px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 0px solid #FEF2BF;
+  border-radius: 20%;
+  cursor: pointer;
+}
+
+.game-over {
+  background-color: crimson;
+  opacity: 0.8;
+}
+
+.red {
+  background-image: url(./images/fire.png);
+  background-size: contain;
+  border-radius: 0px 200px 70px 70px;
+  -webkit-border-radius: 70px 200px 70px 70px;
+  -moz-border-radius: 0px 200px 70px 70px;
+}
+
+.green {
+  background-image: url(./images/grass.png);
+  background-size: contain;
+  border-radius: 200px 0px 70px 70px;
+  -webkit-border-radius: 200px 70px 70px 70px;
+  -moz-border-radius: 200px 70px 70px 70px;
+  transition: transform 1s ease-out; /* or your desired duration/easing */
+  transform: rotate(-720deg); /* Initial state */
+}
+
+.blue {
+  background-image: url(./images/water.png);
+  background-size: contain;
+  border-radius: 71px 70px 200px 70px;
+  -webkit-border-radius: 71px 70px 200px 70px;
+  -moz-border-radius: 71px 70px 200px 70px;
+  transition: transform 1s ease-out; /* or your desired duration/easing */
+  transform: rotate(-360deg); /* Initial state */
+}
+
+.yellow {
+  background-image: url(./images/air.png);
+  background-size: contain;
+  border-radius: 71px 70px 71px 200px;
+  -webkit-border-radius: 71px 70px 71px 200px;
+  -moz-border-radius: 71px 70px 71px 200px;
+  transition: transform 1s ease-in-out; /* or your desired duration/easing */
+  transform: rotate(0deg); /* Initial state */
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+  animation: bounce 0.7s ease;
+}
+
+@keyframes bounce {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(0.9);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  70% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.rotate {
+  transform: rotate(45deg)
+}
+
+.rotate-more {
+  transform: rotate(360deg)
+}
+
+.rotate-gameover {
+  transform: rotate(0deg);
+  transition: transform 1s ease-in-out; /* or your desired duration/easing */
+}
+
+@media (max-width: 500px) {
+  .btn {
+    width: 100px;
+    height: 100px;
+    margin: 15px;
+  }
+}
+
+/* entre 501px e 800px → tablets */
+@media (min-width: 501px) and (max-width: 1043px) {
+  .btn {
+    width: 120px;
+    height: 120px;
+    margin: 20px;
+  }
+}
+
+/* acima de 801px → desktop */
+@media (min-width: 1044px) {
+  .btn {
+    width: 200px;
+    height: 200px;
+  }
+}
