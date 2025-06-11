@@ -24,19 +24,13 @@ A sleek, interactive dice game built with **HTML**, **CSS**, and **JavaScript**.
 ## 🧠 How It Works
 
 - Two random numbers are generated using:
-  ```js
+```
   Math.floor(Math.random() * 6) + 1
   > Each number updates the corresponding dice image (img1, img2) via:
     document.querySelector('.img1').setAttribute('src', './images/diceS1.png')
     document.querySelector('.img2').setAttribute('src', './images/diceS1.png')
 The result is compared to display a result message inside an h2.
 ```
-
-💅 Styling Highlights
-Custom fonts: 'Honk', 'Permanent Marker', 'Barriecito', 'Schibsted Grotesk'
-CSS animation for floating background elements using @keyframes animate
-Button press animation using :active state
-
 📁 Folder Structure
 
 ```plaintext
@@ -52,6 +46,7 @@ Button press animation using :active state
 │   ├── diceS5.png
 │   └── diceS6.png
 ```
+
 🧪 Technologies Used
 - HTML5
 - CSS3
