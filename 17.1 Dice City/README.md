@@ -29,7 +29,7 @@ A sleek, interactive dice game built with **HTML**, **CSS**, and **JavaScript**.
   > Each number updates the corresponding dice image (img1, img2) via:
     document.querySelector('.img1').setAttribute('src', './images/diceS1.png')
     document.querySelector('.img2').setAttribute('src', './images/diceS1.png')
-The result is compared to display a result message inside an <h2>.
+The result is compared to display a result message inside an h2.
 ```
 
 💅 Styling Highlights
