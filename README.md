@@ -1,7 +1,6 @@
-# front-end projects
+# > front-end projects
 
-Main project list:
-<br/>
+### Main project list:
 <ul>
   <li><a href='https://samarog.github.io/projects/17.1%20Dice%20City/dicecity.html' target="_blank">Dice City</a></li>
   <li><a href='https://samarog.github.io/projects/18.1%20MPC%20Sim/index.html' target="_blank">dooMPC</a></li>
