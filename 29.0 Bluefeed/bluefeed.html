@@ -3,158 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>FC Porto Bluefeed</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="bluefeed.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Alumni+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <style>
-    body {
-      font-family: "Alumni Sans", sans-serif;
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 120dvh;
-      height: 90dvh;
-    }
 
-    .container {
-      width: 90dvh;
-      height: 90dvh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem;
-    }
-
-    .container::before {
-    background-image: url(./assets/images/bg.png);
-    background-repeat: no-repeat;
-    background-size: cover;
-    content: '';
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    opacity: 0.95;
-    }
-      
-
-    h1 {
-      margin-bottom: 0rem;
-      color: #00b4d8;
-      font-weight: 300;
-      font-size: 4rem;
-    }
-
-    h3 {
-      margin-bottom: 2rem;
-      font-size: 1.4rem;
-      color: #00b4d8;
-      max-width: 300px;
-      text-align: center;
-    }
-
-    .container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      max-width: 600px;
-      width: 100%;
-    }
-
-    .credit {
-      margin-top: 2rem;
-      font-size: 1.2rem;
-      color: #aaa;
-      display: flex;
-      justify-content: center;
-    }
-
-    .credit a {
-      color: #00b4d8;
-      text-decoration: none;
-      margin-left: 0.2rem;
-    }
-
-    .credit a:hover {
-      text-decoration: underline;
-    }
-
-    .shadow__btn {
-      padding: 10px 20px;
-      border: none;
-      font-size: 27px;
-      color: #fff;
-      border-radius: 7px;
-      letter-spacing: 4px;
-      font-weight: 700;
-      text-transform: uppercase;
-      transition: 0.5s;
-      transition-property: box-shadow;
-    }
-
-    .shadow__btn {
-      background: rgb(0 180 216);
-      box-shadow: 0 0 25px rgb(0 180 216);
-    }
-
-    .shadow__btn:hover {
-      box-shadow: 0 0 5px rgb(0 180 216),
-                  0 0 25px rgb(0,140,255),
-                  0 0 50px rgb(0,140,255),
-                  0 0 100px rgb(0,140,255);
-    }
-
-  @media (max-width: 699px) {
-  body {
-    width: 400px;
-    height: 120px;
-  }
-
-  footer {
-    width: 300px;
-    height: 120px;
-    justify-content: center;
-    text-align: center;
-  }
-
-  h1 {
-      margin-bottom: 0rem;
-      color: #00b4d8;
-      font-weight: 300;
-      font-size: 2.5rem;
-  }
-  }
-
-</style>
 </head>
 <body>
- <div class="container">
-  <h1>FC<span style="font-weight: 600;">Porto</span> 𒆙 Bluefeed</h1>
-  <h3>Live Twitter list of 4,000+ sources, bringing you the latest FC Porto news, updates, and transfer rumors in real time.</h3>
+  <div class="container">
+    <h1>FC<span>Porto</span> 𒆙 Bluefeed</h1>
+    <h3>Live Twitter list of 4,000+ sources, bringing you the latest FC Porto news, updates, and transfer rumors in real time.</h3>
 
-  <div class="button">
-<a href="https://bitly.cx/FCPortoBluefeed" target="_blank" rel="noopener noreferrer"
-   class="shadow__btn">
-  Access
-</a>
+    <div class="button">
+      <a href="https://bitly.cx/FCPortoBluefeed" target="_blank" rel="noopener noreferrer" class="shadow__btn">
+        Access
+      </a>
+    </div>
+
+    <div class="credit">
+      curated by <a href="https://github.com/samarog" target="_blank">@samarog</a>
+    </div>
   </div>
 
-  <div class="credit">
-    curated by <a href="https://github.com/samarog" target="_blank">@samarog</a>
-  </div>
-  </div>
-
-<footer>
-  <p>© samarog <span id="year"></span> | Bluefeed does NOT ask for permissions or access to your X/Twitter account, but you do need to own one to view the feed.</p>
+  <footer>
+    <p>© samarog <span id="year"></span> | Bluefeed does NOT ask for permissions or access to your X/Twitter account, but you do need to own one to view the feed.</p>
+  </footer>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
-</footer>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 </body>
 </html>
