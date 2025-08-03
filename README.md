@@ -1,4 +1,4 @@
-# > frontend + backend projects
+# > frontend projects
 
 ### app list:
 <ul>
@@ -8,7 +8,6 @@
   <li><a href='https://samarog.github.io/projects/19.1%20jQuery/index.html' target="_blank">Hello Worlds!</a></li>
   <li><a href='https://samarog.github.io/projects/19.2%20Simon%20Game/index.html' target="_blank">Don Simon</a></li>
   <li><a href='https://samarog.github.io/projects/19.3%20Codfish%20Zero/index.html' target="_blank">Codfish Zero</a></li>
-  <li><a href='https://escriba.onrender.com/' target="_blank">Escriba</a></li>
   <li><a href='https://samarog.github.io/projects/29.0%20Dragonfeed/index.html' target="_blank">Dragonfeed</a></li>
 </ul>
 
