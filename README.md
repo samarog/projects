@@ -7,7 +7,8 @@
   <li><a href='https://samarog.github.io/projects/18.2%20Calculator/index.html' target="_blank">Calc</a></li>
   <li><a href='https://samarog.github.io/projects/19.1%20jQuery/index.html' target="_blank">Hello Worlds!</a></li>
   <li><a href='https://samarog.github.io/projects/19.2%20Simon%20Game/index.html' target="_blank">Don Simon</a></li>
-  <li><a href='https://samarog.github.io/projects/19.3%20Codfish%20Zero/index.html' target="_blank">Codfish Zero</a></li>
+  <li><a href='https://samarog.github.io/projects/19.3%20Codfish%20v0.4/index.html' target="_blank">Codfish v0.4</a></li>
+  <li><a href='https://samarog.github.io/projects/19.3.1%20Codfish%20v0.1/index.html' target="_blank">Codfish v0.1</a></li>
   <li><a href='https://samarog.github.io/projects/29.0%20Dragonfeed/index.html' target="_blank">Dragonfeed</a></li>
 </ul>
 
