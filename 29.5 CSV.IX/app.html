@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+    <title>CSV.ix</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>CSV.ix</h1>
+    <div class="container">
+      <input type="file" id="csvFile" accept=".csv" />
+
+      <div class="controls">
+        <label>
+          Chart Type:
+          <select id="chartType">
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
+            <option value="pie">Pie</option>
+            <option value="doughnut">Doughnut</option>
+          </select>
+        </label>
+
+        <label>
+          Color:
+          <input type="color" id="chartColor" value="#00ffe1" />
+        </label>
+
+        <button id="downloadBtn" style="font-family: inherit">
+          Save as PNG
+        </button>
+      </div>
+
+      <canvas id="chartCanvas"></canvas>
+    </div>
+    <footer>Gonçalo Amaro @ <span id="year"></span></footer>
+    <script src="./logic.js"></script>
+  </body>
+</html>

@@ -1,0 +1,254 @@
+:root {
+  --bg: #0e0e0e;
+  --fg: #f5f5f5;
+  --accent: #00ffe1;
+  --accent-hover: #00ccb5;
+  --input-bg: #1a1a1a;
+  --border: #333;
+  --swatch-size: 1.6rem; /* New size variable for color picker circle */
+}
+
+body {
+  font-family: "Fira Code", monospace;
+  background-color: var(--bg);
+  color: var(--fg);
+  margin: 0;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+/* dynamic bg */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+      0deg,
+      rgba(0, 255, 225, 0.05) 0px,
+      rgba(0, 255, 225, 0.05) 1px,
+      transparent 1px,
+      transparent 20px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 255, 225, 0.05) 0px,
+      rgba(0, 255, 225, 0.05) 1px,
+      transparent 1px,
+      transparent 20px
+    );
+  animation: gridMove 40s linear infinite;
+  z-index: 0;
+}
+
+@keyframes gridMove {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 100px 100px, 100px 100px;
+  }
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 1;
+}
+
+.container {
+  background-color: rgba(14, 14, 14, 0.85);
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 960px;
+  width: 100%;
+  box-shadow: 0 0 12px rgba(0, 255, 225, 0.2);
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+input[type="file"],
+select,
+button {
+  background-color: var(--input-bg);
+  color: var(--fg);
+  border: 1px solid var(--border);
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  font-size: 1rem;
+  appearance: none;
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+/* smaller color circle */
+input[type="color"] {
+  appearance: none;
+  width: var(--swatch-size);
+  height: var(--swatch-size);
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background: none;
+  box-shadow: 0 0 6px currentColor;
+  color: #00ffe1;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: 1rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 50%;
+}
+
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+  border-radius: 50%;
+}
+
+input[type="file"]::file-selector-button {
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+}
+
+input[type="file"]:hover,
+select:hover {
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 6px currentColor;
+}
+
+input[type="color"]:hover {
+  border-color: var(--accent-hover);
+  box-shadow: 0 0 50px currentColor;
+}
+
+button {
+  background-color: var(--accent);
+  color: #000;
+  font-weight: bold;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+}
+
+#downloadBtn {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-self: flex-end;
+  min-width: 120px;
+}
+
+button:hover {
+  background-color: var(--accent-hover);
+  transform: scale(0.96);
+}
+
+.controls button,
+.controls select {
+  height: 2.6rem;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  align-items: center; /* changed from flex-end for better vertical centering */
+  margin-top: 1rem;
+  z-index: 1;
+}
+
+.controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.9rem;
+  color: var(--fg);
+  min-width: 50px;
+}
+
+.controls button {
+  height: 100%;
+  padding: 0.9rem 1.5rem;
+  font-weight: bold;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.7rem;
+  gap: 0.5rem;
+  color: var(--fg);
+  z-index: 1;
+}
+
+canvas {
+  margin-top: 2rem;
+  width: 100% !important;
+  height: auto !important;
+  background: #11111111;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  box-shadow: 0 0 2px var(--accent-hover);
+  z-index: 1;
+}
+
+select,
+input[type="color"] {
+  cursor: pointer;
+}
+
+label[for="chartColor"] {
+  position: relative;
+}
+
+#chartColor {
+  align-self: center;
+  position: relative;
+  top: -8px; /* adjust this value to move circle up/down */
+  margin-top: 15px; /* reset previous margin so label text stays in place */
+}
+
+#chartCanvas {
+  width: min(90vw, 300px);
+  height: min(90vw, 300px);
+  margin: 2rem auto 0;
+  padding: 0rem;
+}
+
+#chartCanvas:empty {
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px dashed var(--accent);
+}
+
+footer {
+  color: #00ffe1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+}

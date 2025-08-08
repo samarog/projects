@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CSV.ix Zero</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: #f9f9f9;
+        margin: 0;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 1rem;
+      }
+
+      .container {
+        background: white;
+        padding: 2rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        max-width: 900px;
+        width: 100%;
+      }
+
+      input[type="file"],
+      select,
+      input[type="color"],
+      button {
+        margin: 0.5rem 0;
+        padding: 0.6rem;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+      }
+
+      button {
+        background-color: #0066ff;
+        color: white;
+        cursor: pointer;
+        border: none;
+      }
+
+      button:hover {
+        background-color: #004fcc;
+      }
+
+      canvas {
+        margin-top: 2rem;
+        max-width: 100%;
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>CSV.IX Zero</h1>
+    <div class="container">
+      <input type="file" id="csvFile" accept=".csv" />
+
+      <div class="controls">
+        <label>
+          Chart Type:
+          <select id="chartType">
+            <option value="bar">Bar</option>
+            <option value="line">Line</option>
+            <option value="pie">Pie</option>
+            <option value="doughnut">Doughnut</option>
+          </select>
+        </label>
+
+        <label>
+          Color:
+          <input type="color" id="chartColor" value="#0066ff" />
+        </label>
+
+        <button id="downloadBtn">Save as Image</button>
+      </div>
+
+      <canvas id="chartCanvas"></canvas>
+    </div>
+
+    <script>
+      let chartInstance;
+
+      document.getElementById("csvFile").addEventListener("change", handleFile);
+      document
+        .getElementById("chartType")
+        .addEventListener("change", renderChart);
+      document
+        .getElementById("chartColor")
+        .addEventListener("input", renderChart);
+      document
+        .getElementById("downloadBtn")
+        .addEventListener("click", downloadChart);
+
+      function handleFile(event) {
+        const file = event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const text = e.target.result;
+          parseCSV(text);
+        };
+        reader.readAsText(file);
+      }
+
+      let labels = [];
+      let data = [];
+
+      function parseCSV(text) {
+        const lines = text.trim().split("\n");
+        labels = [];
+        data = [];
+
+        lines.forEach((line, index) => {
+          const [label, value] = line.split(",");
+          if (index === 0 && isNaN(parseFloat(value))) return; // skip header
+          labels.push(label);
+          data.push(parseFloat(value));
+        });
+
+        renderChart();
+      }
+
+      function renderChart() {
+        const type = document.getElementById("chartType").value;
+        const color = document.getElementById("chartColor").value;
+        const ctx = document.getElementById("chartCanvas").getContext("2d");
+
+        if (chartInstance) chartInstance.destroy();
+
+        chartInstance = new Chart(ctx, {
+          type: type,
+          data: {
+            labels: labels,
+            datasets: [
+              {
+                label: "Dataset",
+                data: data,
+                backgroundColor:
+                  type === "pie" || type === "doughnut"
+                    ? labels.map(() => color)
+                    : color,
+                borderColor: "#ccc",
+                borderWidth: 1,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: type === "pie" || type === "doughnut",
+              },
+            },
+          },
+        });
+      }
+
+      function downloadChart() {
+        const link = document.createElement("a");
+        link.download = "chart.png";
+        link.href = document.getElementById("chartCanvas").toDataURL();
+        link.click();
+      }
+    </script>
+  </body>
+</html>
