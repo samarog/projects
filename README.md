@@ -10,7 +10,8 @@
   <li><a href='https://samarog.github.io/projects/19.3-01%20Codfish%20v0.1/index.html' target="_blank">Codfish v0.1</a></li>
   <li><a href='https://samarog.github.io/projects/19.3-04%20Codfish%20v0.4/index.html' target="_blank">Codfish v0.4</a></li>
   <li><a href='https://samarog.github.io/projects/29.0%20Dragonfeed/index.html' target="_blank">Dragonfeed</a></li>
-  <li><a href='https://samarog.github.io/projects/29.1%20Pokedex/index.html' target="_blank">Pokedex</a></li>
+  <li><a href='https://samarog.github.io/projects/29.1%20PokeGET/index.html' target="_blank">PokeGET</a></li>
+  <li><a href='https://samarog.github.io/projects/29.5%20CSV.IX/app.html' target="_blank">CSV.ix</a></li>
 </ul>
 
 ### wip list:
