@@ -344,3 +344,156 @@ footer {
   right: 2%;
   margin-bottom: 2%
 }
+
+/* HELPERS */
+
+/* 1) Responsive grid for card/list area */
+.lists {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* equal widths */
+  gap: 14px;
+  align-items: stretch;
+}
+
+/* 2) Let the card size itself within the grid column */
+.extra-info {
+  width: auto;             /* instead of min(300px, 42vw) */
+  max-width: 420px;        /* keeps a nice cap on big screens */
+  margin: 0;               /* grid handles spacing */
+}
+
+/* 3) Make internal card pieces adapt */
+.extra-info .card-art { height: clamp(120px, 24vw, 160px); }
+.extra-info .card-name { font-size: clamp(.72rem, 2.2vw, .9rem); }
+.extra-info .card-hp   { font-size: clamp(.72rem, 2.2vw, .9rem); }
+.extra-info .card-type { font-size: clamp(.58rem, 1.8vw, .7rem); }
+.extra-info .card-body { font-size: clamp(.58rem, 1.8vw, .68rem); }
+.extra-info .card-footer { font-size: clamp(.54rem, 1.6vw, .62rem); }
+
+/* 4) Tables: fill column and scale type */
+.gameboy-table,
+.gameboy-table2 {
+  width: 100%;
+  max-width: none;                 /* remove hard cap so they match column width */
+  font-size: clamp(8px, 1.8vw, 10px);
+}
+
+/* 5) Controls: shrink nicely on small screens */
+#search-input {
+  width: min(100%, 260px);
+  font-size: clamp(10px, 2.6vw, 12px);
+}
+.pokemon-button {
+  font-size: clamp(12px, 2.8vw, 14px);
+  padding: clamp(10px, 2.8vw, 12px) clamp(16px, 4vw, 20px);
+}
+
+/* 6) Backgrounds: avoid overflow/misalignment on mobile */
+body::before {
+  background-size: clamp(180px, 40vw, 300px);
+  top: 15%;
+  margin-right: 4px;
+}
+/* Soften/hide the big grayscale Pokémon on small screens */
+@media (max-width: 640px) {
+  .background-pokemon {
+    opacity: 0.03;
+    transform: none;          /* remove large scale and translate */
+    top: auto; left: auto;
+    display: none;            /* or keep but toned down: max-width: 60vw; opacity: .03; */
+  }
+}
+
+/* 7) Layout breathing room and viewport quirks */
+.hero {
+  min-height: 100dvh;  /* better on mobile than 100vh */
+  padding: 16px;       /* consistent gutters on small screens */
+}
+
+@media (max-width: 640px) {
+  .extra-info {
+    box-shadow: 0 4px 0 #1c1c1c, 0 12px 20px rgba(0,0,0,.35);
+  }
+}
+
+@media (min-width: 480px) {
+  .lists { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 900px) {
+  .lists { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (min-width: 1200px) {
+  .lists { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
+
+/* ✅ DESKTOP: keep original look */
+@media (min-width: 769px) {
+  .lists { 
+    display: flex;
+    flex-direction: column;   /* your original */
+    align-items: center;
+    gap: 14px;
+  }
+  .extra-info { width: min(300px, 42vw); max-width: initial; }
+  .gameboy-table, .gameboy-table2 { max-width: 300px; font-size: 8px; }
+  #search-input { width: 250px; font-size: 12px; }
+  .pokemon-button { font-size: 14px; padding: 12px 20px; }
+
+  body::before { background-size: 300px; top: 20%; margin-right: 10px; }
+  .background-pokemon {
+    display: block;
+    opacity: 0.05;
+    top: 35%; left: 25%;
+    transform: translate(-50%, -50%) scale(200%);
+  }
+  .hero { min-height: 100vh; padding-top: 2%; }
+}
+
+/* 📱 MOBILE: improved distribution & sizing */
+@media (max-width: 768px) {
+  /* even card distribution */
+  .lists {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px;
+    align-items: stretch;
+  }
+
+  /* let card fill its grid column */
+  .extra-info {
+    width: auto;
+    max-width: none;
+    box-shadow: 0 4px 0 #1c1c1c, 0 12px 20px rgba(0,0,0,.35);
+  }
+
+  /* scale internals for readability */
+  .extra-info .card-art  { height: clamp(120px, 24vw, 160px); }
+  .extra-info .card-name { font-size: clamp(.72rem, 2.2vw, .9rem); }
+  .extra-info .card-hp   { font-size: clamp(.72rem, 2.2vw, .9rem); }
+  .extra-info .card-type { font-size: clamp(.58rem, 1.8vw, .7rem); }
+  .extra-info .card-body { font-size: clamp(.58rem, 1.8vw, .68rem); }
+  .extra-info .card-footer { font-size: clamp(.54rem, 1.6vw, .62rem); }
+
+  /* tables fill column */
+  .gameboy-table,
+  .gameboy-table2 {
+    width: 100%;
+    max-width: none;
+    font-size: clamp(8px, 1.8vw, 10px);
+  }
+
+  /* controls shrink nicely */
+  #search-input {
+    width: min(100%, 260px);
+    font-size: clamp(10px, 2.6vw, 12px);
+  }
+  .pokemon-button {
+    font-size: clamp(12px, 2.8vw, 14px);
+    padding: clamp(10px, 2.8vw, 12px) clamp(16px, 4vw, 20px);
+  }
+
+  /* backgrounds toned down to avoid clutter/overflow */
+  body::before { background-size: clamp(180px, 40vw, 300px); top: 15%; margin-right: 4px; }
+  .background-pokemon { display: none; }
+  .hero { min-height: 100dvh; padding: 16px; }
+}
