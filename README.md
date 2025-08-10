@@ -8,7 +8,7 @@
   <li><a href='https://samarog.github.io/projects/19.1%20jQuery/index.html' target="_blank">Hello Worlds!</a></li>
   <li><a href='https://samarog.github.io/projects/19.2%20Simon%20Game/index.html' target="_blank">Don Simon</a></li>
   <li><a href='https://samarog.github.io/projects/29.0%20Dragonfeed/index.html' target="_blank">Dragonfeed</a></li>
-  <li><a href='https://samarog.github.io/projects/29.1%20PokeGET/index.html' target="_blank">PokeGET</a></li>
+  <li><a href='https://samarog.github.io/projects/29.1%20PokeGET/app-v2.html' target="_blank">PokeGET</a></li>
   <li><a href='https://samarog.github.io/projects/29.5%20CSV.IX/app.html' target="_blank">CSV.ix</a></li>
 </ul>
 
