@@ -28,7 +28,7 @@ A simple and responsive **interactive soundboard** built with **vanilla JavaScri
 
 > Sounds are defined in a `soundMap` object linking keys to audio files in the `./sounds` folder.
 
-## 🛠 Project Structure
+## Project Structure
 
 ```plaintext
 📁 project/
@@ -68,3 +68,4 @@ GitHub: [samarog](https://github.com/samarog)
 
 ## License
 This project is free for creative and educational use.
+
