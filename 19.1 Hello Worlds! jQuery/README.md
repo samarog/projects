@@ -1,6 +1,6 @@
 # Hello Worlds!: An Interactive Visual Scene Showcase
 
-An interactive visual project built with HTML, CSS, and jQuery. This experience transforms scenes dynamically through theme-based buttons, applying animated image filters, text changes, and style transitions in real time. Designed as a creative playground for experimenting with visual effects and mood changes.
+An interactive visual project built with **HTML**, **CSS**, and **jQuery**. This experience transforms scenes dynamically through theme-based buttons, applying animated image filters, text changes, and style transitions in real time. Designed as a creative playground for experimenting with visual effects and mood changes.
 
 ## What It Does
 
