@@ -24,9 +24,9 @@ The landing page features a clean design with quick access to the curated feed a
 ├── index.html      # Main landing page
 ├── styles.css      # Styling and layout
 ├── assets/
-│   └── images/
-│       ├── bg.png # Background image (credited to FCPorto.pt)
-│       └── favicon.png  # Website favicon
+    └── images/
+        ├── bg.png # Background image (credited to FCPorto.pt)
+        └── favicon.png  # Website favicon
 ```
 
 ---
@@ -62,3 +62,4 @@ GitHub: [samarog](https://github.com/samarog)
 ## License
 
 This project is open source and free to use.
+
