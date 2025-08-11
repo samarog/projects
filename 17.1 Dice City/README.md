@@ -1,18 +1,18 @@
 ###
-# 🎲 Dice Duel — JavaScript Dice Game
+# 🎲 Dice Duel: JavaScript Dice Game
 
 A sleek, interactive dice game built with **HTML**, **CSS**, and **JavaScript**. Two players roll their dice simultaneously at the click of a button. The game randomly selects values, updates images accordingly, and announces the winner with stylized visuals and animated background effects. Use it to settle family arguments.
 
-## 🚀 Features
+## Features
 
-- 🎲 **Two-player dice roll**
-- 🖼️ **Dynamic dice image updates** based on the roll
-- 👑 **Winner announcement** or tie logic
-- ✨ **Animated floating background elements** for visual appeal. Used a template, I must say.
-- 📱 **Responsive and clean UI**
-- 🎨 Custom fonts for headings and buttons for a stylized look
+- **Two-player dice roll**
+- **Dynamic dice image updates** based on the roll
+- **Winner announcement** or tie logic
+- **Animated floating background elements** for visual appeal. Used a template, I must say.
+- **Responsive and clean UI**
+- Custom fonts for headings and buttons for a stylized look
 
-## 🕹️ How to Play
+## How to Play
 
 1. Click the **Roll Dice** button.
 2. Watch both dice animate and display their new values.
@@ -21,7 +21,7 @@ A sleek, interactive dice game built with **HTML**, **CSS**, and **JavaScript**.
    - **Player 2 wins!**
    - Or **It’s a tie…**
 
-## 🧠 How It Works
+## How It Works
 
 - Two random numbers are generated using:
 ```
@@ -47,17 +47,18 @@ The result is compared to display a result message inside an h2.
 │   └── diceS6.png
 ```
 
-🧪 Technologies Used
+## Technologies Used
 - HTML5
 - CSS3
 - Vanilla JavaScript
 
 ---
 
-## 👨‍🎨 Author
+## Author
 Built by Gonçalo Amaro
 GitHub: @samarog
 Twitter/X: @gonsamaro
 
-## 📄 License
+## License
 This project is free for creative and educational use.
+
