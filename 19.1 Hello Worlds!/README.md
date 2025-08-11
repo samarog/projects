@@ -11,7 +11,7 @@ An interactive visual project built with **HTML**, **CSS**, and **jQuery**. This
   - ZORG (Alien Planet)
   - Yellowcreek (Western Town)
   - Blackfire Forge (Steampunk Factory)
-- Includes a **light/dark mode toggle** hidden in the sun.
+- Includes a **light/dark mode toggle** hidden in the sun/moon.
 - Applies `rotate`, `blur`, `fade`, `filter`, and `transform` effects.
 - Reveals buttons on image click.
 - Adds hover effects to titles and buttons.
