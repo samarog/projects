@@ -1,9 +1,9 @@
-# PokeGET: A Pokemon Card Generator
+# PokeGET: A Pokémon Card Generator
 
 A fun, retro-styled card generator web app to **search for and display Pokémon** data using the [PokéAPI](https://pokeapi.co/).
 Built with HTML, CSS, and JavaScript, it combines a **Pokémon GO-inspired interface** with **Game Boy / Pokémon TCG aesthetics**.
 
-![PokeGET App](demo.gif)
+<p align="center"><img src="demo.gif" alt="PokeGET App" width="40%"></p>
 
 ---
 
@@ -12,7 +12,7 @@ Built with HTML, CSS, and JavaScript, it combines a **Pokémon GO-inspired inter
 - **Search by Pokémon name** — Enter the name of any Pokémon and get its details instantly.
 - **Search by type** — Enter a type (e.g., `fire`, `water`) to get a random Pokémon from that category.
 - **Random Pokémon generator** — (hidden but coded) Generates a random Pokémon from all available generations.
-- **Card generator with unique moves** — Each card contains different moves creating unique variations.
+- **Card generator with unique moves** — Each card contains different moves, creating unique variations.
 - **Pokémon card view** — Shows:
   - Official sprite and type
   - HP, level, height, weight, and Pokédex number
@@ -38,7 +38,7 @@ Built with HTML, CSS, and JavaScript, it combines a **Pokémon GO-inspired inter
      ```bash
      npx serve
      ```
-
+     
 ---
 
 ## Tech Stack
@@ -63,16 +63,18 @@ Built with HTML, CSS, and JavaScript, it combines a **Pokémon GO-inspired inter
 ## How It Works
 
 ```mermaid
+
 flowchart TD
     A[User enters Pokémon name/type or clicks Random] --> B[JavaScript fetches data from PokéAPI]
     B --> C{Is query a Pokémon name?}
-    C -- Yes --> D[Get Pokémon data from /pokemon/{name}]
-    C -- No --> E[Fetch type data from /type/{type}]
+    C -- Yes --> D[Get Pokémon data from /pokemon/&#123;name&#125;]
+    C -- No --> E[Fetch type data from /type/&#123;type&#125;]
     E --> F[Select random Pokémon from type list]
     F --> D
     D --> G[Parse stats, abilities, and moves]
     G --> H[Render retro Pokémon card and tables in DOM]
     H --> I[Play Pokémon cry]
+
 ```
 
 ---
