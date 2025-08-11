@@ -58,7 +58,7 @@ An interactive visual project built with HTML, CSS, and jQuery. This experience 
 
 ---
 
-## 👨Author
+## Author
 Built by **Gonçalo Amaro**  
 Twitter/X: [@gonsamaro](https://twitter.com/gonsamaro)  
 GitHub: [samarog](https://github.com/samarog)
