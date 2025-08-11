@@ -1,10 +1,8 @@
-###
+# 🔷 Don Simon: An Elemental Memory Game
 
-# 🔷 Don Simon: Elemental Memory Game
+A built-from-scratch web-based alternative to the classic **Simon Game**, featuring custom element themes (fire, water, air, and earth). Players must repeat an increasingly complex sequence of button presses using mouse or keyboard.
 
-> A built-from-scratch web-based alternative to the classic **Simon Game**, featuring custom element themes (fire, water, air, and earth). Players must repeat an increasingly complex sequence of button presses using mouse or keyboard.
-
-## 🎮 How to Play
+## How to Play
 
 - Press **"S"** to start the game.
 - A sequence of elements will be shown (with sound and animation).
@@ -17,18 +15,18 @@
 - If you make a mistake, the game ends.
 - Your highest score is saved locally in your browser.
 
-## 🧱 Tech Stack
+## Tech Stack
 
 - **HTML5** — semantic structure
 - **CSS3** — animations, responsiveness, element-based themes
 - **JavaScript** — core game logic and event handling
 - **jQuery** — simplified DOM manipulation
 
-## 📐 Algorithm
+## Algorithm
 
 - Game algorithm at (./algo.drawio.svg)
 
-## 💾 Features
+## Features
 
 - Custom styling with element-themed buttons
 - Keyboard controls and mouse support
@@ -36,7 +34,7 @@
 - Smooth animations and audio feedback
 - Fully responsive layout with media queries
 
-## 🚀 Running the Game
+## Running the Game
 
 1. Clone or download the repo.
 2. Open `index.html` in any modern web browser.
@@ -44,12 +42,12 @@
 
 ---
 
-## 🛠️ Author
+## Author
 
 Built by **Gonçalo Amaro**  
 Twitter/X: [@gonsamaro](https://twitter.com/gonsamaro)  
 GitHub: [samarog](https://github.com/samarog)
 
-## 📄 License
+## License
 
 This project is open source and free to use.
