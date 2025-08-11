@@ -78,7 +78,7 @@ A simple and intuitive calculator UI, styled for readability and ease of use.
 
 ---
 
-## 📊 Logic Flow
+## Logic Flow
 The `algo.drawio.html` file contains a **flowchart** of the entire logic, covering:
 - Variable initialization
 - Event listener setup
@@ -102,3 +102,4 @@ GitHub: [samarog](https://github.com/samarog)
 
 ## License
 This project is free for creative and educational use.
+
