@@ -17,4 +17,4 @@
   <li><a href='https://samarog.github.io/projects/99.1%20Gramasgel/index.html' target="_blank">Gramasgel </a>| Front-end design for a commercial project</li>
 </ul>
 
-> Each project contains a README file. Open the project dedicated folder to find it.
+> Each project contains a README file. Open the project dedicated folder to run it.
