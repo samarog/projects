@@ -10,7 +10,7 @@ A built-from-scratch web-based alternative to the classic **Simon Game**, featur
   - ^ `ArrowUp` → Green (Earth)
   - v `ArrowDown` → Blue (Water)
   - < `ArrowLeft` → Yellow (Air)
-  - > `ArrowRight` → Red (Fire)
+  - <span> > </span> `ArrowRight` → Red (Fire)
 - The sequence gets longer each round.
 - If you make a mistake, the game ends.
 - Your highest score is saved locally in your browser.
@@ -39,8 +39,6 @@ A built-from-scratch web-based alternative to the classic **Simon Game**, featur
 1. Clone or download the repo.
 2. Open `index.html` in any modern web browser.
 3. Play and try to beat your hi-score!
-
----
 
 ## Author
 
