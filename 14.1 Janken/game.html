@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Janken Game</title>
+    <style>
+      :root {
+        --paper: #faf6ef;
+        --ink: #1c1b1a;
+        --crimson: #c1121f;
+        --vermilion: #e11d48;
+        --gold: #b08900;
+        --indigo: #223a70;
+        --accent: #b91c1c;
+      }
+
+      body {
+        margin: 0;
+        color: var(--ink);
+        font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic",
+          system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+          sans-serif;
+        background-color: var(--paper);
+        background-size: 80px 60px;
+        background-attachment: fixed;
+        min-height: 100dvh;
+        position: relative;
+      }
+
+      /* Rising sun accent */
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0 auto auto 50%;
+        width: 520px;
+        height: 520px;
+        transform: translateX(-50%);
+        top: -240px;
+        border-radius: 50%;
+        background: var(--vermilion);
+        opacity: 0.14;
+        pointer-events: none;
+        filter: saturate(120%);
+      }
+
+      .wrap {
+        max-width: 900px;
+        margin: 6rem auto;
+        padding: 2.25rem;
+        background: rgba(255, 255, 255, 0.65);
+        backdrop-filter: blur(6px);
+        border: 1px solid rgba(0, 0, 0, 0.06);
+        border-radius: 24px;
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+      }
+
+      .title {
+        margin: 0 0 0.25rem 0;
+        font-size: clamp(2.2rem, 4vw, 3rem);
+        letter-spacing: 0.02em;
+        font-weight: 800;
+        line-height: 1.1;
+        text-align: center;
+        color: var(--indigo);
+      }
+
+      .subtitle {
+        margin: 0 0 2rem 0;
+        text-align: center;
+        font-size: 0.95rem;
+        color: #4b5563;
+      }
+
+      /* Divider with kumiko-esque motif */
+      .divider {
+        --line: rgba(0, 0, 0, 0.1);
+        position: relative;
+        height: 22px;
+        margin: 1.5rem 0 1.75rem 0;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          var(--line),
+          transparent
+        );
+      }
+      .divider::before {
+        left: 0;
+      }
+      .divider::after {
+        right: 0;
+      }
+      .kiku {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: inline-block;
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: radial-gradient(
+              circle,
+              rgba(0, 0, 0, 0.07) 12%,
+              transparent 13%
+            )
+            center/12px 12px,
+          #fff7f5;
+        box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.55);
+      }
+
+      .buttons {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 14px;
+        margin-top: 1rem;
+      }
+
+      .btn {
+        -webkit-tap-highlight-color: transparent;
+        cursor: pointer;
+        border: 0;
+        padding: 0;
+        background: none;
+      }
+
+      .btn .face {
+        display: grid;
+        place-items: center;
+        padding: 18px 20px;
+        border-radius: 16px;
+        border: 1.5px solid rgba(0, 0, 0, 0.08);
+        background: repeating-linear-gradient(
+            135deg,
+            rgba(0, 0, 0, 0.032),
+            rgba(0, 0, 0, 0.032) 6px,
+            transparent 6px,
+            transparent 12px
+          ),
+          linear-gradient(#fff, #fff8f2);
+        box-shadow: 0 6px 0 0 rgba(0, 0, 0, 0.08),
+          0 10px 24px rgba(0, 0, 0, 0.08);
+        transition: transform 180ms ease, box-shadow 180ms ease,
+          filter 180ms ease;
+      }
+      .btn:active .face {
+        transform: translateY(4px);
+        box-shadow: 0 2px 0 0 rgba(0, 0, 0, 0.08),
+          0 6px 14px rgba(0, 0, 0, 0.08);
+      }
+
+      .btn-primary .label {
+        font-size: 1.35rem;
+        font-weight: 900;
+        letter-spacing: 0.02em;
+      }
+
+      .btn-primary .jp {
+        display: block;
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #6b7280;
+        margin-top: 4px;
+      }
+
+      .btn .emoji {
+        font-size: 1.4rem;
+        margin-right: 8px;
+      }
+
+      .btn-accent .face {
+        border-color: rgba(190, 22, 34, 0.28);
+        background: radial-gradient(120% 140% at 100% 0%, rgba(225, 29, 72, 0.08), transparent 40%),
+          linear-gradient(#fff, #fff8f2);
+      }
+
+      .btn-paper .face {
+        border-color: rgba(255, 165, 149, 0.28);
+        background: radial-gradient(120% 190% at 10% 150%, rgba(126, 0, 0, 0.08), transparent 40%),
+          radial-gradient(#ffdad2, #f8f3ee);
+      }
+
+      .btn-danger .face {
+        border-color: rgba(34, 58, 112, 0.25);
+      }
+
+      .btn:hover .face {
+        filter: saturate(110%);
+      }
+
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 1.5rem;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        background: linear-gradient(#ffffff, #fffaf3);
+        box-shadow: 0 2px 0 rgba(0, 0, 0, 0.07);
+        font-weight: 700;
+        cursor: pointer;
+        transition: transform 160ms ease, box-shadow 160ms ease;
+      }
+      .pill:active {
+        transform: translateY(2px);
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.07);
+      }
+
+      .note {
+        margin-top: 1rem;
+        text-align: center;
+        font-size: 0.85rem;
+        color: #6b7280;
+      }
+
+      /* Small footer */
+      .footer {
+        margin-top: 2rem;
+        text-align: center;
+        color: #6b7280;
+        font-size: 0.85rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="wrap">
+      <h1 class="title">じゃんけん | Janken</h1>
+      <p class="subtitle">Gu (Rock) ・ Choki (Scissors) ・ Pa (Paper)</p>
+
+      <div class="divider" aria-hidden="true">
+        <span class="kiku"></span>
+      </div>
+
+      <section class="buttons">
+        <button
+          class="btn btn-primary btn-accent"
+          onclick="
+        result = playGame('rock');
+        console.log(placard);
+      "
+        >
+          <span class="face">
+            <span class="label"><span class="emoji">✊</span>Rock</span>
+            <span class="jp">グー</span>
+          </span>
+        </button>
+
+        <button
+          class="btn btn-primary btn-paper"
+          onclick="
+        result = playGame('paper')
+        console.log(placard);
+      "
+        >
+          <span class="face">
+            <span class="label"><span class="emoji">🖐️</span>Paper</span>
+            <span class="jp">パー</span>
+          </span>
+        </button>
+
+        <button
+          class="btn btn-primary btn-danger"
+          onclick="
+        result = playGame('scissors')
+        console.log(placard);
+      "
+        >
+          <span class="face">
+            <span class="label"><span class="emoji">✌️</span>Scissors</span>
+            <span class="jp">チョキ</span>
+          </span>
+        </button>
+      </section>
+
+      <div class="toolbar">
+        <button class="pill" onclick="simGame(prompt('How many matches?'));">
+          Sim Game
+        </button>
+        <button class="pill" onclick="showScore();">Form</button>
+        <button
+          class="pill"
+          onclick="
+        placard.wins = 0;
+        placard.losses = 0;
+        placard.ties = 0;
+        score = [];
+        localStorage.removeItem('placard');
+        localStorage.removeItem('score');
+      "
+        >
+          Reset Score
+        </button>
+      </div>
+
+      <div class="footer">
+        Scores are stored locally (localStorage). Alerts show results.
+      </div>
+    </main>
+
+    <script src="engine.js"></script>
+  </body>
+</html>

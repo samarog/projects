@@ -2,6 +2,7 @@
 
 ### app list:
 <ul>
+  <li><a href='https://samarog.github.io/projects/14.1%20Janken/game.html' target="_blank">Janken </a>| A japanese classical game</li>
   <li><a href='https://samarog.github.io/projects/17.1%20Dice%20City/dicecity.html' target="_blank">Dice City </a>| A simple dice-throwing game</li>
   <li><a href='https://samarog.github.io/projects/18.1%20MPC%20Sim/index.html' target="_blank">dooMPC </a>| A 16-pad MPC simulator </li>
   <li><a href='https://samarog.github.io/projects/18.2%20Calculator/index.html' target="_blank">Calc </a>| A calculator: pretty much self-explainatory </li>
