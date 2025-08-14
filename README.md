@@ -1,21 +1,24 @@
 # > frontend / backend projects
 
-### app list:
-<ul>
-  <li><a href='https://samarog.github.io/projects/14.1%20Janken/game.html' target="_blank">Janken </a>| A japanese classical game</li>
-  <li><a href='https://samarog.github.io/projects/17.1%20Dice%20City/dicecity.html' target="_blank">Dice City </a>| A simple dice-throwing game</li>
-  <li><a href='https://samarog.github.io/projects/18.1%20MPC%20Sim/index.html' target="_blank">dooMPC </a>| A 16-pad MPC simulator </li>
-  <li><a href='https://samarog.github.io/projects/18.2%20Calculator/index.html' target="_blank">Calc </a>| A calculator: pretty much self-explainatory </li>
-  <li><a href='https://samarog.github.io/projects/19.1%20Hello%20Worlds!/index.html' target="_blank">Hello Worlds! </a>| A project built entirely in jQuery </li>
-  <li><a href='https://samarog.github.io/projects/19.2%20Simon%20Game/index.html' target="_blank">Don Simon </a>| My version of Simon Game </li>
-  <li><a href='https://samarog.github.io/projects/29.0%20Dragonfeed/index.html' target="_blank">Dragonfeed </a>| A landing page for a focused Twitter search </li>
-  <li><a href='https://samarog.github.io/projects/29.1%20PokeGET/app-v2.html' target="_blank">PokeGET </a>| A Pokemon web app to retrieve and display Pokémon data using the PokéAPI </a></li>
-  <li><a href='https://samarog.github.io/projects/29.5%20CSV.IX/app.html' target="_blank">CSV.ix </a>| A lightweight CSV Reader</li>
-</ul>
+## app list
 
-### wip list:
-<ul>
-  <li><a href='https://samarog.github.io/projects/99.1%20Gramasgel/index.html' target="_blank">Gramasgel </a>| Front-end design for a commercial project</li>
-</ul>
+| Project Name | Link | Description |
+|--------------|------|-------------|
+| **Janken** | [Open](https://samarog.github.io/projects/14.1%20Janken/game.html) | A Japanese classical game |
+| **Dice City** | [Open](https://samarog.github.io/projects/17.1%20Dice%20City/dicecity.html) | A simple dice-throwing game |
+| **dooMPC** | [Open](https://samarog.github.io/projects/18.1%20MPC%20Sim/index.html) | A 16-pad MPC simulator |
+| **Calc** | [Open](https://samarog.github.io/projects/18.2%20Calculator/index.html) | A calculator (self-explanatory) |
+| **Hello Worlds!** | [Open](https://samarog.github.io/projects/19.1%20Hello%20Worlds!/index.html) | A project built entirely in jQuery |
+| **Don Simon** | [Open](https://samarog.github.io/projects/19.2%20Simon%20Game/index.html) | My version of Simon Game |
+| **Dragonfeed** | [Open](https://samarog.github.io/projects/29.0%20Dragonfeed/index.html) | A landing page for a focused Twitter search |
+| **PokeGET** | [Open](https://samarog.github.io/projects/29.1%20PokeGET/app-v2.html) | A Pokémon web app to retrieve and display Pokémon data using the PokéAPI |
+| **CSV.ix** | [Open](https://samarog.github.io/projects/29.5%20CSV.IX/app.html) | A lightweight CSV Reader |
+| **Mapl** | [Open](https://projects-zo3k.onrender.com/) | A SQL-supported travel tracker |
 
-> Each project contains a README file. Open the project dedicated folder to run it.
+## wip list
+
+| Project Name | Link | Description |
+|--------------|------|-------------|
+| Gramasgel | [Open](https://samarog.github.io/projects/99.1%20Gramasgel/index.html) | Front-end design for a commercial project |
+
+> Each project contains a README file. Open the project’s dedicated folder to run it.
