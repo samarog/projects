@@ -1,69 +1,77 @@
 import express from "express";
 import bodyParser from "body-parser";
-import { Client } from "pg";
-
-const db = new Client ({
-  user: "postgres",
-  host: "localhost",
-  password: "samarog",
-  database: "world",
-  port: 5433
-})
+import pg from "pg";
 
 const app = express();
 const port = 3000;
+const db = new pg.Client({
+  user: "postgres",
+  host: "localhost",
+  database: "world",
+  password: "samarog",
+  port: 5433,
+});
 
 db.connect();
 
-let quiz = [];
-db.query("SELECT * FROM flags", (err, res) => {
-  try {
-    quiz = res.rows
-    console.log(res.rows)
-  } catch (err) {
-    console.error('Error executing query.', err.stack)
-  }
-})
-
-let totalCorrect = 0;
-
-// Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-let currentQuestion = {};
-
-// GET home page
-app.get("/", (req, res) => {
-  totalCorrect = 0;
-  nextQuestion();
-  console.log(currentQuestion);
-  res.render("index.ejs", { question: currentQuestion });
+app.get("/", async (req, res) => {
+  const result = await db.query("SELECT country_code FROM visited_countries");
+  let countries = []; // array aqui, para prevenir leaks
+  result.rows.map((e) => countries.push(e.country_code));
+  console.log(countries);
+  res.render("index.ejs", { total: countries.length, countries });
 });
 
-// POST a new post
-app.post("/submit", (req, res) => {
-  let answer = req.body.answer.trim();
-  let isCorrect = false;
-  if (currentQuestion.name.toLowerCase() === answer.toLowerCase()) {
-    totalCorrect++;
-    console.log(totalCorrect);
-    isCorrect = true;
+app.post("/add", async (req, res) => {
+  const newCountry = req.body.country.trim();
+  const newCountrySanitized = newCountry
+    .split(/\s+/)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" "); // case capital em todas as palavras: United Kingdom
+  try {
+    const { rows } = await db.query(
+      `SELECT * FROM world_countries WHERE name = $1`, [newCountrySanitized]
+    );
+    const countryFlag = rows[0].flag;
+    try {
+      await db.query(
+        `INSERT INTO visited_countries (country_code) VALUES ($1)`, [countryFlag]
+      );
+      res.redirect("/");
+    } catch (error) {
+      console.log("Country query failed: " + error);
+      const result = await db.query(
+        "SELECT country_code FROM visited_countries"
+      );
+      let countries = [];
+      result.rows.map((e) => countries.push(e.country_code));
+      res.render("index.ejs", {
+        total: countries.length,
+        countries,
+        error: "Country already visited.",
+      });
+    }
+  } catch (error) {
+    console.log("Country query failed: " + error);
+    const result = await db.query("SELECT country_code FROM visited_countries");
+    let countries = [];
+    result.rows.map((e) => countries.push(e.country_code));
+    res.render("index.ejs", {
+      total: countries.length,
+      countries,
+      error: "Country doesn't exist.",
+    });
   }
-
-  nextQuestion();
-  res.render("index.ejs", {
-    question: currentQuestion,
-    wasCorrect: isCorrect,
-    totalScore: totalCorrect,
-  });
 });
 
-function nextQuestion() {
-  const randomCountry = quiz[Math.floor(Math.random() * quiz.length)];
-  currentQuestion = randomCountry;
-}
+app.post("/delete", async (req, res) => {
+  await db.query(`DELETE FROM visited_countries`);
+  res.redirect("/");
+});
 
 app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
