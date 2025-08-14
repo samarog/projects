@@ -18,7 +18,7 @@ body {
   overflow: hidden;
 }
 
-/* bg animation - credit: Louis Hoebregts */ 
+/* bg base animation - credit: Louis Hoebregts | I only added/mod some elements like the sun and the plane */ 
 
 @keyframes move {
     100% {
@@ -32,7 +32,7 @@ span {
 }
 
 .background {
-    position: fixed;
+    position: absolute;
     width: 100vw;
     height: 100vh;
     top: 0;
@@ -40,6 +40,7 @@ span {
     background: #0b272c;
     overflow: hidden;
     z-index: -1;
+    inset: 0;
 }
 
 .background span {
@@ -64,13 +65,20 @@ span {
     box-shadow: 42vmin 0 5.306449866795107vmin currentColor;
 }
 .background span:nth-child(1) {
-    color: #1d2c3f;
-    top: 1%;
-    left: 51%;
-    animation-duration: 243s;
-    animation-delay: -10s;
-    transform-origin: -15vw -7vh;
-    box-shadow: -42vmin 0 5.4813588047946755vmin currentColor;
+  top: 22%;
+  display: flex;
+  border-radius: 50%;
+  color: #1d2c3f;
+  animation: moveCurve 50s linear infinite;
+  z-index: 99;
+}
+
+@keyframes moveCurve {
+  0%   { transform: translate(0vw, 0vh) rotate(2deg); }
+  25%  { transform: translate(25vw, 4vh) rotate(4deg); }
+  50%  { transform: translate(50vw, 8vh) rotate(8deg); }
+  75%  { transform: translate(75vw, 16vh) rotate(18deg); }
+  100% { transform: translate(100vw, 28vh) rotate(22deg); }
 }
 .background span:nth-child(2) {
     color: #103c3c;
@@ -83,12 +91,12 @@ span {
 }
 .background span:nth-child(3) {
     color: #103c3c;
-    top: 55%;
-    left: 12%;
-    animation-duration: 234s;
-    animation-delay: -178s;
-    transform-origin: 15vw -14vh;
-    box-shadow: -42vmin 0 5.888735574250632vmin currentColor;
+    top: 2%;
+    left: 39%;
+    animation-duration: 45s;
+    animation-delay: -51s;
+    transform-origin: -16vw 19vh;
+    box-shadow: -42vmin 0 6.169649013933295vmin currentColor;
 }
 .background span:nth-child(4) {
     color: #1d2c3f;
