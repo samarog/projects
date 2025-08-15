@@ -7,7 +7,7 @@
 | **Janken** | [Open](https://samarog.github.io/projects/14.1%20Janken/game.html) | A Japanese classical game |
 | **Dice City** | [Open](https://samarog.github.io/projects/17.1%20Dice%20City/dicecity.html) | A simple dice-throwing game |
 | **dooMPC** | [Open](https://samarog.github.io/projects/18.1%20MPC%20Sim/index.html) | A 16-pad MPC simulator |
-| **Calc** | [Open](https://samarog.github.io/projects/18.2%20Calculator/index.html) | A calculator (self-explanatory) |
+| **Calc** | [Open](https://samarog.github.io/projects/18.2%20Calculator/index.html) | A calculator (pretty much self-explanatory) |
 | **Hello Worlds!** | [Open](https://samarog.github.io/projects/19.1%20Hello%20Worlds!/index.html) | A project built entirely in jQuery |
 | **Don Simon** | [Open](https://samarog.github.io/projects/19.2%20Simon%20Game/index.html) | My version of Simon Game |
 | **Dragonfeed** | [Open](https://samarog.github.io/projects/29.0%20Dragonfeed/index.html) | A landing page for a focused Twitter search |
