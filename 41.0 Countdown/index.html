@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sankofa+Display&display=swap"
+      rel="stylesheet"
+    />
+    <title>Predator Countdown</title>
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        background: #000;
+        overflow: hidden;
+        font-family: system-ui, sans-serif;
+      }
+      .stage {
+        position: fixed;
+        inset: 0;
+        background: #000;
+      }
+      #bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        z-index: 0;
+        pointer-events: none;
+      }
+
+      .scene {
+        position: absolute;
+        inset: 0;
+        perspective: 1900px;
+        z-index: 1;
+      }
+      #hud {
+        position: absolute;
+        z-index: 2;
+        pointer-events: auto;
+        top: 65%;
+        left: 65%;
+        transform: translate(-76%, -88%) rotateY(-13deg) rotateX(8deg)
+          skewX(-21deg) skewY(13deg) scale(1.01);
+        transform-origin: center;
+        transform-style: preserve-3d;
+
+        background: rgba(0, 0, 0, 0.88);
+        padding: 20px 24px;
+        border-radius: 20px 50px 50px 20px;
+        text-align: center;
+        box-shadow: -14px 0 20px #ff5e00;
+      }
+
+      #timer {
+        font-size: 64px;
+        font-family: "Sankofa Display", monospace;
+        color: #ff8a2a;
+        text-shadow: 0 0 8px rgb(255, 136, 0), 0 0 15px rgb(255, 153, 0);
+        letter-spacing: 0.16em;
+      }
+      #timer.warning {
+        color: #ff2a2a;
+        text-shadow: 0 0 8px #f00, 0 0 15px #f00;
+      }
+      #timer.ended {
+        color: #ccc;
+        text-shadow: none;
+      }
+      @keyframes blink {
+        0%,
+        49% {
+          opacity: 1;
+          filter: drop-shadow(0 0 10px currentColor);
+        }
+        50%,
+        100% {
+          opacity: 0.15;
+          filter: none;
+        }
+      }
+      #timer.blink {
+        animation: blink 0.6s steps(2, end) infinite;
+      }
+
+      .controls {
+        margin-top: 16px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+      button {
+        background: transparent;
+        border: 1px solid rgb(255, 101, 0);
+        color: rgb(255, 101, 0);
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-family: "Roboto";
+      }
+      button:hover {
+        background: rgb(255, 101, 0);
+        color: #000;
+      }
+
+      @media (max-width: 1800px) {
+        #hud {
+          transform: translate(-76%, -88%) rotateY(-13deg) rotateX(8deg)
+            skewX(-21deg) skewY(13deg) scale(0.91);
+        }
+      }
+      @media (max-width: 1720px) {
+        #hud {
+          top: 63%;
+          left: 66%;
+          transform: translate(-79%, -88%) rotateY(-13deg) rotateX(8deg)
+            skewX(-21deg) skewY(13deg) scale(0.86);
+        }
+      }
+      @media (max-width: 1630px) {
+        #hud {
+          top: 63%;
+          left: 66%;
+          transform: translate(-77%, -88%) rotateY(-13deg) rotateX(8deg)
+            skewX(-21deg) skewY(13deg) scale(0.83);
+        }
+      }
+      @media (max-width: 1530px) {
+        #hud {
+          top: 63%;
+          left: 66%;
+          transform: translate(-77%, -88%) rotateY(-13deg) rotateX(8deg)
+            skewX(-21deg) skewY(13deg) scale(0.81);
+        }
+      }
+      @media (max-width: 1440px) {
+        #hud {
+          top: 62%;
+          left: 66%;
+          transform: translate(-77%, -88%) rotateY(-13deg) rotateX(8deg)
+            skewX(-21deg) skewY(13deg) scale(0.64);
+        }
+
+        .scene {
+          position: fixed;
+          inset: 0;
+          perspective: 300px;
+          z-index: 1;
+        }
+      }
+      @media (max-width: 1330px) {
+        .scene {
+          position: fixed;
+          inset: 0;
+          pointer-events: none;
+          display: block;
+          perspective: 900px;
+        }
+
+        #hud {
+          position: absolute;
+          top: 58vh;
+          left: 46vw;
+          transform: translate(-50%, -50%) rotateY(-26deg) rotateX(-8deg)
+            skewX(-6deg) scale(1.05);
+          transform-origin: center;
+          transform-style: preserve-3d;
+          pointer-events: auto;
+
+          background: rgba(0, 0, 0, 0.88);
+          border: 2px solid rgb(255, 101, 0);
+          padding: 20px 40px;
+          border-radius: 12px;
+          text-align: center;
+          box-shadow: 0 0 20px rgb(255, 101, 0);
+        }
+
+        #bg {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          opacity: 0.23;
+          object-position: center;
+          z-index: 0;
+          pointer-events: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="stage" id="stage">
+      <img id="bg" src="predator.png" alt="Predator" />
+      <div class="scene">
+        <div id="hud">
+          <div id="timer">--:--</div>
+          <div class="controls">
+            <button id="btnStart">Start ▶</button>
+            <button id="btnPause">Pause</button>
+            <button id="btnResume">Resume</button>
+            <button id="btnReset">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      let remainingSeconds = 0;
+      let intervalId = null;
+
+      function formatTime(s) {
+        const m = Math.floor(s / 60);
+        const sec = String(s % 60).padStart(2, "0");
+        return m + ":" + sec;
+      }
+
+      function updateDisplay() {
+        const hud = document.getElementById("timer");
+        hud.textContent = formatTime(remainingSeconds);
+        hud.classList.remove("warning", "ended", "blink");
+        if (remainingSeconds <= 0) {
+          hud.textContent = "BOOM!";
+          hud.classList.add("ended");
+        } else if (remainingSeconds <= 10) {
+          hud.classList.add("warning", "blink");
+        } else if (remainingSeconds <= 30) {
+          hud.classList.add("warning");
+        }
+      }
+
+      function tick() {
+        if (remainingSeconds <= 0) {
+          clearInterval(intervalId);
+          intervalId = null;
+          updateDisplay();
+          return;
+        }
+        remainingSeconds--;
+        updateDisplay();
+      }
+
+      function startCountdown(durationSec) {
+        remainingSeconds = durationSec;
+        clearInterval(intervalId);
+        updateDisplay();
+        intervalId = setInterval(tick, 1000);
+      }
+      function pauseCountdown() {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      function resumeCountdown() {
+        if (intervalId === null && remainingSeconds > 0) {
+          intervalId = setInterval(tick, 1000);
+        }
+      }
+      function resetCountdown(newDurationSec) {
+        clearInterval(intervalId);
+        intervalId = null;
+        remainingSeconds = newDurationSec;
+        updateDisplay();
+        intervalId = setInterval(tick, 1000);
+      }
+
+      document.getElementById("btnStart").addEventListener("click", () => startCountdown(60));
+      document.getElementById("btnPause").addEventListener("click", pauseCountdown);
+      document.getElementById("btnResume").addEventListener("click", resumeCountdown);
+      document.getElementById("btnReset").addEventListener("click", () => resetCountdown(60));
+    </script>
+  </body>
+</html>
