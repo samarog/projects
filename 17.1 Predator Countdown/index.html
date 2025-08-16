@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&family=Sankofa+Display&display=swap" rel="stylesheet" />
+    <title>Predator Countdown</title>
+  </head>
+  <body>
+    <div class="stage" id="stage">
+      <img id="bg" src="assets/images/predator.png" alt="Predator" />
+      <div class="scene">
+        <div id="hud">
+          <div id="timer">--:--</div>
+          <div class="controls">
+            <button id="btnStart">Start ▶</button>
+            <button id="btnPause">Pause</button>
+            <button id="btnResume">Resume</button>
+            <button id="btnReset">Reset</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <script>
+      let remainingSeconds = 0;
+      let intervalId = null;
+
+      function formatTime(s) {
+        const m = Math.floor(s / 60);
+        const sec = String(s % 60).padStart(2, "0");
+        return m + ":" + sec;
+      }
+
+      function updateDisplay() {
+        const hud = document.getElementById("timer");
+        hud.textContent = formatTime(remainingSeconds);
+        hud.classList.remove("warning", "ended", "blink");
+        if (remainingSeconds <= 0) {
+          hud.textContent = "BOOM!";
+          hud.classList.add("ended");
+        } else if (remainingSeconds <= 10) {
+          hud.classList.add("warning", "blink");
+        } else if (remainingSeconds <= 30) {
+          hud.classList.add("warning");
+        }
+      }
+
+      function tick() {
+        if (remainingSeconds <= 0) {
+          clearInterval(intervalId);
+          intervalId = null;
+          updateDisplay();
+          return;
+        }
+        remainingSeconds--;
+        updateDisplay();
+      }
+
+      function startCountdown(durationSec) {
+        remainingSeconds = durationSec;
+        clearInterval(intervalId);
+        updateDisplay();
+        intervalId = setInterval(tick, 1000);
+      }
+      function pauseCountdown() {
+        clearInterval(intervalId);
+        intervalId = null;
+      }
+      function resumeCountdown() {
+        if (intervalId === null && remainingSeconds > 0) {
+          intervalId = setInterval(tick, 1000);
+        }
+      }
+      function resetCountdown(newDurationSec) {
+        clearInterval(intervalId);
+        intervalId = null;
+        remainingSeconds = newDurationSec;
+        updateDisplay();
+        intervalId = setInterval(tick, 1000);
+      }
+
+      document.getElementById("btnStart").addEventListener("click", () => startCountdown(60));
+      document.getElementById("btnPause").addEventListener("click", pauseCountdown);
+      document.getElementById("btnResume").addEventListener("click", resumeCountdown);
+      document.getElementById("btnReset").addEventListener("click", () => resetCountdown(60));
+    </script>
+  </body>
+</html>
