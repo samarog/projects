@@ -1,12 +1,17 @@
-# Predator Countdown HUD — CSS 3D + JS Timer
+# Predator Countdown HUD: a CSS 3D + JS Timer study
 
 A single-file demo that overlays a glowing **Predator-style timer** on top of a background image using **pure CSS transforms** (3D perspective, skew, rotate) and a **simple JavaScript countdown**. The layout includes responsive tweaks for different viewport widths.
 
 ---
 
+##
+
+![Predator HUD 1900x1440](https://i.ibb.co/GvZPvKM0/hg.png)
+
 ## Features
 
 - **3D HUD panel** using `perspective`, `rotateX/Y`, `skewX/Y`, `translate`.
+- **Custom duration input**: you decide when the timer starts (e.g., 90 [seconds]).
 - **Glowing countdown digits** with warning + blink states as time runs out.
 - **Responsive**: media queries adjust scale/perspective/position across breakpoints.
 - **Simple controls**: Start / Pause / Resume / Reset.
@@ -15,6 +20,8 @@ A single-file demo that overlays a glowing **Predator-style timer** on top of a 
 ---
 
 ## How it works
+
+- Type the desired number of seconds and start the timer.
 
 ### CSS: the HUD illusion
 - The background image fills the viewport via `object-fit: cover`.
@@ -98,17 +105,9 @@ Change the digits’ color & glow:
 ### 3) Responsive breakpoints
 Adjust the blocks under `@media (max-width: …)` to refine scale/position/perspective for your target devices.
 
-### 4) Timer defaults
-Change initial durations wired to the buttons at the end of the script:
-
-```js
-document.getElementById("btnStart").addEventListener("click", () => startCountdown(60)); // 60 seconds
-document.getElementById("btnReset").addEventListener("click", () => resetCountdown(60)); // 60 seconds
-```
-
 ---
 
-## Notes & Credits
+## Final Notes
 
 - This is a fan-UI homage inspired by the *Predator* aesthetics. Background image in fan artwork. Use your own background image or confirm you have rights to use/distribute it.
 - Built with plain HTML/CSS/JS — no frameworks.
