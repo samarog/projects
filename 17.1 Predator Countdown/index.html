@@ -18,17 +18,23 @@
           <div class="controls">
             <button id="btnStart">Start ▶</button>
             <button id="btnPause">Pause</button>
-            <button id="btnResume">Resume</button>
-            <button id="btnReset">Reset</button>
+            <button style="display: none;" id="btnReset">Reset</button>
+            <input type="text" id="btnInput" placeholder="Time" inputmode="numeric" pattern="[0-9:]*">
           </div>
         </div>
       </div>
     </div>
-
-
+    
     <script>
       let remainingSeconds = 0;
       let intervalId = null;
+
+      function getSecondsFromInput() {
+        const userNumber = document.getElementById("btnInput").value.trim().slice(0,3);
+        if (!userNumber) return 60;  
+        const n = parseInt(userNumber);
+        return n;
+      }
 
       function formatTime(s) {
         const m = Math.floor(s / 60);
@@ -84,10 +90,10 @@
         intervalId = setInterval(tick, 1000);
       }
 
-      document.getElementById("btnStart").addEventListener("click", () => startCountdown(60));
+      document.getElementById("btnStart").addEventListener("click", () => startCountdown(getSecondsFromInput()));
       document.getElementById("btnPause").addEventListener("click", pauseCountdown);
       document.getElementById("btnResume").addEventListener("click", resumeCountdown);
-      document.getElementById("btnReset").addEventListener("click", () => resetCountdown(60));
+      document.getElementById("btnReset").addEventListener("click", () => resetCountdown(getSecondsFromInput()));
     </script>
   </body>
 </html>
