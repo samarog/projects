@@ -98,6 +98,16 @@
         background: rgb(255, 101, 0);
         color: #000;
       }
+      #btnInput {
+        background: transparent;
+        border: 1px solid rgb(255, 101, 0);
+        color: rgb(255, 101, 0);
+        padding: 8px 14px;
+        border-radius: 8px;
+        cursor: crosshair;
+        width: 35px;
+        font-family: "Roboto";
+      }
 
       @media (max-width: 1800px) {
         #hud {
@@ -182,4 +192,5 @@
           z-index: 0;
           pointer-events: none;
         }
+
       }
